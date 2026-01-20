@@ -1,49 +1,54 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="App">
-      <div className="modal" onClick={() => setOpen(true)}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <h1>User Details Modal</h1>
+      {/* Open button */}
+      <button onClick={() => setIsOpen(true)}>Open Form</button>
 
-          {open ? (
-            <button onClick={() => setOpen(false)}>Open Form</button>
-          ) : (
-            <>
-              <h3>Fill Details</h3>
+      {/* Modal */}
+      {isOpen && (
+        <div
+          className="modal-overlay"
+          onClick={() => setIsOpen(false)} // click outside → close
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()} // inside click → ignore
+          >
+            <h1>User Details Modal</h1>
+            <h3>Fill Details</h3>
 
-              <form>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input type="text" id="username" required />
-                <br />
+            <form>
+              <label htmlFor="username">Username:</label>
+              <br />
+              <input type="text" id="username" required />
+              <br />
 
-                <label htmlFor="email">Email Address:</label>
-                <br />
-                <input type="email" id="email" required />
-                <br />
+              <label htmlFor="email">Email Address:</label>
+              <br />
+              <input type="email" id="email" required />
+              <br />
 
-                <label htmlFor="phone">Phone Number:</label>
-                <br />
-                <input type="tel" id="phone" required />
-                <br />
+              <label htmlFor="phone">Phone Number:</label>
+              <br />
+              <input type="tel" id="phone" required />
+              <br />
 
-                <label htmlFor="dob">Date of Birth:</label>
-                <br />
-                <input type="date" id="dob" required />
-                <br />
+              <label htmlFor="dob">Date of Birth:</label>
+              <br />
+              <input type="date" id="dob" required />
+              <br />
 
-                <button className="submit-button" type="submit">
-                  Submit
-                </button>
-              </form>
-            </>
-          )}
+              <button className="submit-button" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
