@@ -5,49 +5,43 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="modal" onClick={() => setOpen(true)}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <h1>User Details Modal</h1>
+      <h1>User Details Modal</h1>
 
-          {open ? (
-            <button onClick={() => setOpen(false)}>Open Form</button>
-          ) : (
-            <>
-              <h3>Fill Details</h3>
+      {open && <button onClick={() => setOpen(false)}>Open Form</button>}
 
-              <form>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input type="text" id="username" required />
-                <br />
+      {!open && (
+        <div className="modal" onClick={() => setOpen(true)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Fill Details</h3>
 
-                <label htmlFor="email">Email Address:</label>
-                <br />
-                <input type="email" id="email" required />
-                <br />
+            <form>
+              <label htmlFor="username">Username:</label>
+              <br />
+              <input type="text" id="username" required />
+              <br />
 
-                <label htmlFor="phone">Phone Number:</label>
-                <br />
-                <input type="tel" id="phone" required />
-                <br />
+              <label htmlFor="email">Email Address:</label>
+              <br />
+              <input type="email" id="email" required />
+              <br />
 
-                <label htmlFor="dob">Date of Birth:</label>
-                <br />
-                <input type="date" id="dob" required />
-                <br />
+              <label htmlFor="phone">Phone Number:</label>
+              <br />
+              <input type="tel" id="phone" required />
+              <br />
 
-                <button
-                  className="submit-button"
-                  type="submit"
-                  onClick={() => setOpen(true)}
-                >
-                  Submit
-                </button>
-              </form>
-            </>
-          )}
+              <label htmlFor="dob">Date of Birth:</label>
+              <br />
+              <input type="date" id="dob" required />
+              <br />
+
+              <button className="submit-button" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
